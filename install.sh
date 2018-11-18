@@ -63,16 +63,6 @@ create_folder $TMP_PATH
 create_folder $LOG_PATH
 
 tput setaf 2;echo
-echo "### Creating the email smtp server account ... ### "
-tput sgr0;read -p "Introduce el usuario desde el que enviar notificaciones (pej. pepe@gmail.com) : " useraccount
-echo -n $useraccount>$PROJECT_PATH/.userSMTP
-
-tput setaf 2;echo
-echo "### Creating the password file with email smtp server password ... ### "
-tput sgr0;read -p "Introduce la password de la cuenta smtp: " password
-echo $password>$PROJECT_PATH/.passSMTP
-
-tput setaf 2;echo
 echo "### Creating the accounts to use the alarm system ... ### "
 tput sgr0;read -p "Introduce el listado de emails para usar la alarma (separado por comas): " listAccounts
 echo -n $listAccounts>$PROJECT_PATH/.listACCESS
@@ -97,12 +87,6 @@ tput sgr0;echo
 go install webinterface/webserver.go
 
 cp /root/bin/webserver $PROJECT_PATH/webinterface/
-
-tput setaf 2;echo
-echo "### Installing the discovery codes utility and copy the binary to the project directory ... ###"
-tput sgr0;echo
-go install scripts/discoverCodes.go
-cp /root/bin/discoverCodes $PROJECT_PATH/
 
 tput setaf 2;echo
 echo "### Creating the file in rsyslog ###"
